@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitus Groen — Binnenkort online</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Newsreader voor een warme, moderne en architecturale look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f4f3ef;
+            --text-main: #2b3027;
+            --accent-green: #3f4e3e;
+            --sand: #d8d3c5;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        /* Subtiele achtergrondpatroon / sfeerlaag */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--sand) 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        header {
+            padding: 2.5rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        .tagline-top {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            opacity: 0.8;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5vw;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--sand);
+            color: var(--accent-green);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 i {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.6;
+            color: rgba(43, 48, 39, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Formulier stijl */
+        .subscribe-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 440px;
+            margin: 0 auto 1rem auto;
+            background: var(--white);
+            padding: 0.4rem;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(63, 78, 62, 0.06);
+            border: 1px solid rgba(63, 78, 62, 0.12);
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .subscribe-form input::placeholder {
+            color: rgba(43, 48, 39, 0.4);
+        }
+
+        .subscribe-form button {
+            background-color: var(--accent-green);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-form button:hover {
+            background-color: #2b3027;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: rgba(43, 48, 39, 0.5);
+        }
+
+        footer {
+            padding: 2.5rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(43, 48, 39, 0.6);
+            border-top: 1px solid rgba(63, 78, 62, 0.08);
+        }
+
+        footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive aanpassingen voor mobiel */
+        @media (max-width: 600px) {
+            .subscribe-form {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                gap: 0.75rem;
+            }
+
+            .subscribe-form input {
+                background: var(--white);
+                border-radius: 50px;
+                border: 1px solid rgba(63, 78, 62, 0.12);
+                padding: 1rem 1.2rem;
+            }
+
+            .subscribe-form button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Habitus Groen</a>
+        <div class="tagline-top">Spatial & Landscape Design</div>
+    </header>
+
+    <main>
+        <div class="hero-content">
+            <div class="badge">Binnenkort online</div>
+            <h1>Ruimte voor <i>groen</i>, natuur en architectuur.</h1>
+            <p>We werken achter de schermen aan een nieuwe digitale plek voor onze visie op tuinen, landschap en duurzaam ontwerp. Laat je e-mailadres achter om op de hoogte te blijven van de lancering.</p>
+            
+            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Bedankt voor je aanmelding! We houden je op de hoogte.');">
+                <input type="email" placeholder="Jouw e-mailadres..." required>
+                <button type="submit">Houd me op de hoogte</button>
+            </form>
+            <div class="form-note">Geen spam, alleen een seintje bij de lancering.</div>
+        </div>
+    </main>
+
+    <footer>
+        <div>&copy; <span id="year"></span> Habitus Groen. Alle rechten voorbehouden.</div>
+        <div>Contact: <a href="mailto:info@habitusgroen.nl">info@habitusgroen.nl</a></div>
+    </footer>
+
+    <script>
+        // Automatisch het huidige jaar instellen in de footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
