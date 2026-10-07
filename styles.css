@@ -349,3 +349,44 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
   nav.main-nav.open { display: flex; }
   .menu-toggle { display: block; }
 }
+/* --- TOEGEVOEGDE AANPASSINGEN VOOR HABITUS GROEN --- */
+
+/* Zorg voor een stabiele gecentreerde layout zodat het logo niet verspringt */
+.center-container, .home-container, .contact-container, .werk-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Logo (tuinschaar) 2x zo klein maken en gefixeerd gecentreerd */
+.logo-img, .tuinschaar-logo {
+    width: 25px; /* Als je huidige logo bijv. 50px is, wordt dit automatisch de helft */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* "HABITUS GROEN tuinontwerp & aanleg" iets hoger plaatsen */
+.header-title-block, .hero-title-group {
+    margin-top: -20px;
+}
+
+/* Tuinontwerp met kleine letter in de onderregel */
+.subtext, .footer-sub, .bottom-line {
+    text-transform: none;
+}
+
+/* Specifiek voor de contact pagina: lijn en onderregel naar beneden duwen */
+.contact-page .footer-line, 
+.contact-page .bottom-footer {
+    margin-top: 80px;
+}
+
+/* Werkwijze pagina: Titel netjes links uitgelijnd met de content */
+.werk-page .content-wrapper, .werk-container .text-block {
+    text-align: left;
+    align-self: flex-start;
+    margin-left: 10%;
+}
