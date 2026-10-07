@@ -13,7 +13,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-y: scroll; scrollbar-gutter: stable; }
 
 body {
   margin: 0;
@@ -45,6 +45,10 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* tuinschaar-icoon voor het logo (niet op de homepage) */
+.logo a { display: inline-flex; align-items: center; gap: 10px; }
+.logo-icon { height: 26px; width: auto; display: block; }
 
 nav.main-nav {
   display: flex;
@@ -85,16 +89,16 @@ nav.main-nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 46px;
+  width: 23px;
   height: auto;
-  max-height: 88px;
+  max-height: 44px;
   object-fit: contain;
   z-index: 20;
   pointer-events: none;
   opacity: 0.96;
 }
 @media (max-width: 900px) {
-  .floating-logo { width: 38px; max-height: 72px; }
+  .floating-logo { width: 19px; max-height: 36px; }
 }
 
 /* ---------- Hero (home) ---------- */
@@ -106,11 +110,13 @@ nav.main-nav a:hover {
 }
 .hero-center {
   text-align: center;
+  transform: translateY(-40px);
 }
 .hero-center .eyebrow {
   font-size: 26px;
   letter-spacing: 0.06em;
 }
+.hero-center .hero-icon { display: block; width: 34px; height: auto; margin: 22px auto 0; }
 .hero-center .eyebrow-sub {
   margin-top: 8px;
   font-size: 13px;
@@ -182,7 +188,7 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
 .project-hero {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 56px var(--gutter) 0;
+  padding: 64px var(--gutter) 0;
 }
 .project-hero h1 {
   font-size: clamp(20px, 2.4vw, 27px);
@@ -212,6 +218,23 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
 .intro-text section:last-child { margin-bottom: 0; }
 .intro-photo { aspect-ratio: 4/3.6; overflow: hidden; background: #ece9dd; }
 .intro-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Slideshow */
+.intro-photo.slideshow { position: relative; aspect-ratio: 1/1; }
+.slideshow .slides, .slideshow .slide { position: absolute; inset: 0; }
+.slideshow .slide { opacity: 0; transition: opacity 0.6s ease; }
+.slideshow .slide.active { opacity: 1; }
+.slide-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border: none; border-radius: 50%;
+  background: rgba(255,255,255,0.85); color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 2; padding: 0;
+  transition: background 0.2s ease;
+}
+.slide-btn:hover { background: #fff; }
+.slide-btn.prev { left: 12px; }
+.slide-btn.next { right: 12px; }
 
 /* ---------- Reviews ---------- */
 .reviews-wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 90px; }
@@ -285,7 +308,8 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
 .project-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---------- Werkwijze ---------- */
-.werkwijze-list { max-width: 780px; margin: 0 auto; padding: 0 var(--gutter) 100px; }
+.werkwijze-list { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 100px; }
+.werkwijze-list .werkwijze-fase { max-width: 780px; }
 .werkwijze-fase { padding: 28px 0; border-top: 1px solid var(--line); }
 .werkwijze-fase:last-child { border-bottom: 1px solid var(--line); }
 .fase-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
@@ -297,12 +321,13 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
 
 /* ---------- About ---------- */
 .about-page {
-  max-width: 700px;
-  margin: 0;
-  padding: 0 24px 90px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 90px;
 }
+.about-copy { max-width: 700px; }
 .about-title {
-  padding: 28px 0 10px;
+  padding: 64px 0 36px;
 }
 .about-title h1 {
   font-size: clamp(26px, 3.4vw, 36px);
@@ -326,7 +351,7 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
 }
 
 /* ---------- Contact ---------- */
-.contact-body { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 100px; }
+.contact-body { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 100px; min-height: calc(50vh + 40px); }
 .contact-body .org { font-size: 14px; margin-bottom: 22px; }
 .contact-body .field { font-size: 14px; margin-bottom: 6px; }
 .contact-body a { border-bottom: 1px solid var(--ink-faint); }
@@ -348,45 +373,4 @@ footer.site-footer-min a:hover { border-bottom-color: var(--accent); color: var(
   }
   nav.main-nav.open { display: flex; }
   .menu-toggle { display: block; }
-}
-/* --- TOEGEVOEGDE AANPASSINGEN VOOR HABITUS GROEN --- */
-
-/* Zorg voor een stabiele gecentreerde layout zodat het logo niet verspringt */
-.center-container, .home-container, .contact-container, .werk-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* Logo (tuinschaar) 2x zo klein maken en gefixeerd gecentreerd */
-.logo-img, .tuinschaar-logo {
-    width: 25px; /* Als je huidige logo bijv. 50px is, wordt dit automatisch de helft */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* "HABITUS GROEN tuinontwerp & aanleg" iets hoger plaatsen */
-.header-title-block, .hero-title-group {
-    margin-top: -20px;
-}
-
-/* Tuinontwerp met kleine letter in de onderregel */
-.subtext, .footer-sub, .bottom-line {
-    text-transform: none;
-}
-
-/* Specifiek voor de contact pagina: lijn en onderregel naar beneden duwen */
-.contact-page .footer-line, 
-.contact-page .bottom-footer {
-    margin-top: 80px;
-}
-
-/* Werkwijze pagina: Titel netjes links uitgelijnd met de content */
-.werk-page .content-wrapper, .werk-container .text-block {
-    text-align: left;
-    align-self: flex-start;
-    margin-left: 10%;
 }

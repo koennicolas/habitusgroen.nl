@@ -18,4 +18,23 @@ document.addEventListener('DOMContentLoaded', function () {
       img.src = frames[i];
     }, 500);
   });
+
+  // Slideshow: automatisch verder, pauze bij hover, knoppen voor vorige/volgende
+  document.querySelectorAll('.slideshow').forEach(function (box) {
+    var slides = box.querySelectorAll('.slide');
+    if (slides.length < 2) return;
+    var i = 0, timer = null, delay = 4000;
+    function show(n) {
+      slides[i].classList.remove('active');
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add('active');
+    }
+    function start() { stop(); timer = setInterval(function () { show(i + 1); }, delay); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    box.querySelector('.prev').addEventListener('click', function () { show(i - 1); });
+    box.querySelector('.next').addEventListener('click', function () { show(i + 1); });
+    box.addEventListener('mouseenter', stop);
+    box.addEventListener('mouseleave', start);
+    start();
+  });
 });

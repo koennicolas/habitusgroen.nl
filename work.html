@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Werkwijze — Habitus Groen</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Habitus Groen</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 </head>
-<body class="werk-page">
-    <header class="site-header">
-        <div class="logo-text">HABITUS GROEN</div>
-        <nav class="site-nav">
-            <a href="index.html">PORTFOLIO</a>
-            <a href="work.html">WERKWIJZE</a>
-            <a href="about.html">OVER ONS</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
-    </header>
+<body>
 
-    <main class="werk-container">
-        <h1 class="page-title">WERKWIJZE</h1>
-        <div class="content-wrapper">
-            <!-- Hier staat je inhoud van werkwijze (zoals Intake, Ontwerp, Aanleg) -->
-        </div>
-    </main>
+<header class="site-header">
+  <div class="logo"><a href="index.html"><img class="logo-icon" src="images/tuinschaar-01.png" alt="">Habitus Groen</a></div>
+  <button class="menu-toggle" aria-label="Menu">Menu</button>
+  <nav class="main-nav">
+    <a href="work.html" aria-current="page">Portfolio</a>
+    <a href="werkwijze.html">Werkwijze</a>
+    <a href="about.html">Over ons</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-    <footer class="bottom-footer">
-        <span class="subtext">Habitus Groen — tuinontwerp & aanleg &nbsp;·&nbsp; Werkwijze</span>
-    </footer>
+<div class="page-title">
+  <h1>Portfolio</h1>
+  <p>Een selectie van tuinen die we hebben ontworpen en aangelegd.</p>
+</div>
+
+<div class="project-grid">
+  <a href="project-dudoo.html" class="project-card">
+    <div class="thumb">
+      <img src="images/tuin_na_bloem.jpg" alt="Bloeiende tuin bij Food with Varinder">
+    </div>
+    <div class="meta">
+      <span>Food with Varinder</span>
+    </div>
+  </a>
+</div>
+
+<footer class="site-footer-min">
+  Habitus Groen — tuinontwerp &amp; aanleg &nbsp;·&nbsp; <a href="contact.html">Contact</a>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
